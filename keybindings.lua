@@ -3,37 +3,37 @@ local state = require('state')
 --local colors = require('colors')
 
 local ALL_MODES = {
-	'tool',
-	'linestyle',
+  'tool',
+  'linestyle',
 }
 
 local colors = {
-	hard = {
-		black = 0x000000,
-		blue = 0x000099,
-		red = 0x990000,
-		green = 0x009900,
-		purple = 0x990099,
+  hard = {
+    black = 0x000000,
+    blue = 0x000099,
+    red = 0x990000,
+    green = 0x009900,
+    purple = 0x990099,
 
-	},
-	soft = {
-		grey = 0x878787,
-		light_blue = 0x7676ff,
-		orange = 0xff6611,
-		light_green = 0x55ff55,
-		cyan = 0xff30ba,
-	},
+  },
+  soft = {
+    grey = 0x878787,
+    light_blue = 0x7676ff,
+    orange = 0xff6611,
+    light_green = 0x55ff55,
+    cyan = 0xff30ba,
+  },
 
 }
 
 -- helper functions
 local function cleanShape()
-	api.ruler(false)
-	api.arrow(false)
-	api.rectangle(false)
-	api.ellipse(false)
-	api.spline(false)
-	api.fill(false)
+  api.ruler(false)
+  api.arrow(false)
+  api.rectangle(false)
+  api.ellipse(false)
+  api.spline(false)
+  api.fill(false)
 end
 
 -- modify for different layout or for left handed use
@@ -74,20 +74,21 @@ local key_rows_left = {
 --]]
 
 local function changeMode(mode, stickyValue)
-	state.currentMode = mode
-	if stickyValue ~= nil then
-		state.sticky = stickyValue
-	end
-	local display = state.currentMode
-	if state.sticky then
-		display = display .. ' (sticky)'
-	end
-	api.setPlaceholderValue('vi-mode', display)
+  state.currentMode = mode
+  if stickyValue ~= nil then
+    state.sticky = stickyValue
+  end
+  local display = state.currentMode
+  if state.sticky then
+    display = display .. ' (sticky)'
+  end
+  api.setPlaceholderValue('vi-mode', display)
 end
 
 --------------------
 -- KEYBINDINGS:   --
 --------------------
+
 
 
 -- NOTE: Pylosophy Split keyboard focused (Glove80 / Go60)
@@ -108,313 +109,337 @@ end
 
 
 local keybindings = {
-	--NOTE: Left Side Drawing
-	-- Tools
-	-- NOTE: Tool
-	--
-	-- TAB hand -- Q undo     -- W toogle wand -- E linestyle   -- R selction rect -- T fit width           # CONTROL ROW
-	-- __       -- A pen      -- S box         -- D elipse      -- F ruler         -- G arrow               # Tool ROW
-	-- __       -- Z blue pen -- X fblue box   -- C blue felipse -- V blue arrow    -- B  bezier            # Style combo, presets
-	--  `  marker --
+  --NOTE: Left Side Drawing
+  -- Tools
+  -- NOTE: Tool
+  --
+  -- TAB hand -- Q undo     -- W toogle wand -- E linestyle   -- R selction rect -- T fit width           # CONTROL ROW
+  -- __       -- A pen      -- S box         -- D elipse      -- F ruler         -- G arrow               # Tool ROW
+  -- __       -- Z blue pen -- X fblue box   -- C blue felipse -- V blue arrow    -- B  bezier            # Style combo, presets
+  --  `  marker --
 
-	-- Control row
+  -- Control row
 
-	hand = {
-		description = 'Hand',
-		buttons = { '<tab>' },
-		modes = { 'tool' },
-		call = api.hand,
-	},
+  hand = {
+    description = 'Hand',
+    buttons = { 'Tab' },
+    modes = { 'tool' },
+    call = api.hand,
+  },
 
-	undo = {
-	},
-	wand = {
+  undo = {
+    description = 'Undo',
+    buttons = { 'q' },
+    modes = { 'tool' },
+    call = api.undo,
+  },
 
-	},
+  wand = {
 
-	linestyle = {
-		description = 'Linestyle mode',
-		buttons = { 'e' },
-		modes = { 'tool' },
-		call = function()
-			changeMode('linestyle')
-		end,
-	},
-	fitWidth = {
+  },
 
-	},
+  linestyle = {
+    description = 'Linestyle mode',
+    buttons = { 'e' },
+    modes = { 'tool' },
+    call = function()
+      changeMode('linestyle')
+    end,
+  },
+  fitWidth = {
+    description = 'zoom to fit',
+    buttons = { 't' },
+    modes = { 'tool' },
+    call = api.zoomFit,
 
-	-- Tool row
-	pen = {
-		description = 'Pen',
-		buttons = { 'a' },
-		modes = { 'tool' },
-		call = function()
-			cleanShape()
-			api.pen()
-		end,
-	},
-	rectangle = {
-		description = 'Rectangle',
-		buttons = { 's' },
-		modes = { 'tool' },
-		call = api.rectangle,
-	},
-	ellipse = {
-		description = 'Ellipse',
-		buttons = { 'd' },
-		modes = { 'tool' },
-		call = api.ellipse,
-	},
-	ruler = {
-		description = 'Ruler',
-		buttons = { 'f' },
-		modes = { 'tool' },
-		call = api.ruler,
-	},
-	arrow = {
-		description = 'Arrow',
-		buttons = { 'g' },
-		modes = { 'tool' },
-		call = api.arrow,
-	},
-	bluePen = {
+  },
 
-	},
-	filledBlueBox = {},
-	filledBlueElipse = {},
-	blueArrow = {},
-	highlighter = {
-		description = 'Highlighter',
-		buttons = { 'backquote' },
-		modes = { 'tool' },
-		call = api.highlighter,
+  -- Tool row
+  pen = {
+    description = 'Pen',
+    buttons = { 'a' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.pen()
+    end,
+  },
+  rectangle = {
+    description = 'Rectangle',
+    buttons = { 's' },
+    modes = { 'tool' },
+    call = api.rectangle,
+  },
+  ellipse = {
+    description = 'Ellipse',
+    buttons = { 'd' },
+    modes = { 'tool' },
+    call = api.ellipse,
+  },
+  ruler = {
+    description = 'Ruler',
+    buttons = { 'f' },
+    modes = { 'tool' },
+    call = api.ruler,
+  },
+  arrow = {
+    description = 'Arrow',
+    buttons = { 'g' },
+    modes = { 'tool' },
+    call = api.arrow,
+  },
+  bluePen = {
 
-	},
-	spline = {
-		description = 'Spline',
-		buttons = { 'b' },
-		modes = { 'tool' },
-		call = api.spline,
-	},
+  },
+  filledBlueBox = {},
+  filledBlueElipse = {},
+  blueArrow = {},
+  highlighter = {
+    description = 'Highlighter',
+    buttons = { 'backquote' },
+    modes = { 'tool' },
+    call = api.highlighter,
 
-
-	-- combo row
-	-- presets most used
-
-	-- NOTE:  <SHIFT> Tool
-	--
-	-- TAB toggleClipping -- Q redo    -- W         -- E linesyle   -- R selection -- T fit height          # Control variation row
-	-- __                 -- A fpen    -- S fbox    -- D felipse    -- F cord      -- G dArrow              # Tool variation ROW
-	-- __                 -- Z red pen -- X fredbox -- C red elipse -- V red arrow -- B fbezier             # Style combo,presets variation
-	-- ` mangenta marker --
-
-	-- Control variation
-
-	redo = {
-		description = 'Redo',
-		buttons = { '<shift>q' },
-		modes = { 'tool' },
-		call = api.redo,
-	},
-
-	stikyLinestyle = {
-		description = 'Linestyle mode',
-		buttons = { '<shift>e' },
-		modes = { 'tool' },
-		call = function()
-			changeMode('linestyle', true)
-		end,
-	},
-
-	selection = {
-		description = 'Selection',
-		buttons = { '<shift>r' },
-		modes = { 'tool' },
-		call = api.selectRegion,
-	},
+  },
+  spline = {
+    description = 'Spline',
+    buttons = { 'b' },
+    modes = { 'tool' },
+    call = api.spline,
+  },
 
 
-	-- NOTE:  Linestyle
-	--
-	-- high contrast colors, thicknes
-	--
-	-- TAB -- Q       -- W       -- E tool   -- R          -- T
-	-- __  -- A black  -- S dblue -- D red    -- F mangenta -- G dgreen                                      # Hight contrast Colors
-	-- __  -- Z vthin -- X thin  -- C medium -- V thick    -- B vthick                                      # Thicknes
-	-- ``` --
+  -- combo row
+  -- presets most used
 
-	tool = {
-		description = 'tool mode',
-		buttons = { 'e' },
-		modes = { 'linestyle' },
-		call = function()
-			changeMode('tool')
-		end,
-	},
+  -- NOTE:  <SHIFT> Tool
+  --
+  -- TAB toggleClipping -- Q redo    -- W         -- E linesyle   -- R selection -- T fit height          # Control variation row
+  -- __                 -- A fpen    -- S fbox    -- D felipse    -- F cord      -- G dArrow              # Tool variation ROW
+  -- __                 -- Z red pen -- X fredbox -- C red elipse -- V red arrow -- B fbezier             # Style combo,presets variation
+  -- ` mangenta marker --
 
-	-- High contast colors
+  -- Control variation
 
-	black = {
-		description = 'Black',
-		buttons = { 'a' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.hard.black)
-		end,
-	},
+  gridSnapping =
+  {
+    description = 'Toogle grid Snapping',
+    buttons = { '<shift>Tab' },
+    modes = { 'tool' },
+    call = api.gridSnapping,
+  },
 
-	blue = {
-		description = 'Dark Blue',
-		buttons = { 's' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.hard.blue)
-		end,
-	},
-
-	red = {
-		description = 'Red',
-		buttons = { 'd' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.hard.red)
-		end,
-	},
-
-	purple = {
-		description = 'Purple',
-		buttons = { 'f' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.hard.purple)
-		end,
-	},
-
-	green = {
-		description = 'Green',
-		buttons = { 'g' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.hard.green)
-		end,
-	},
+  redo = {
+    description = 'Redo',
+    buttons = { '<shift>q' },
+    modes = { 'tool' },
+    call = api.redo,
+  },
 
 
-	-- Thickness
-	veryFine = {
-		description = 'Very Fine',
-		buttons = { 'z' },
-		modes = { 'linestyle' },
-		call = api.veryFine,
-	},
-	fine = {
-		description = 'Fine',
-		buttons = { 'x' },
-		modes = { 'linestyle' },
-		call = api.fine,
-	},
-	medium = {
-		description = 'Medium',
-		buttons = { 'c' },
-		modes = { 'linestyle' },
-		call = api.medium,
-	},
-	thick = {
-		description = 'Thick',
-		buttons = { 'v' },
-		modes = { 'linestyle' },
-		call = api.thick,
-	},
-	veryThick = {
-		description = 'Very thick',
-		buttons = { 'b' },
-		modes = { 'linestyle' },
-		call = api.veryThick,
-	},
+  stikyLinestyle = {
+    description = 'Linestyle mode',
+    buttons = { '<shift>e' },
+    modes = { 'tool' },
+    call = function()
+      changeMode('linestyle', true)
+    end,
+  },
 
-	-- NOTE:  <SHIFT> Linestyle
-	--
-	-- low contrast colors, linestyle
-	--
-	-- TAB -- Q      -- W       -- E        -- R        -- T
-	-- __  -- A grey -- S lblue   -- D orange    -- F yellow --  G lgreen                                  # Low Contrast Colors
-	-- __  -- Z .... -- X _. _. _ -- C  _ _ _ _  -- V ______  -- B                                         # Line modifyer
-	-- ``` --
-
-	-- Low contast colors
-
-	grey = {
-		description = 'Black',
-		buttons = { '<shift>a' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.soft.grey)
-		end,
-	},
-
-	lightBlue = {
-		description = 'Light Blue',
-		buttons = { '<shift>s' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.soft.light_blue)
-		end,
-	},
-
-	orange = {
-		description = 'Orange',
-		buttons = { '<shift>d' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.soft.orange)
-		end,
-	},
-
-	cyan = {
-		description = 'cyan',
-		buttons = { '<shift>f' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.soft.cyan)
-		end,
-	},
-
-	lightGreen = {
-		description = 'Light Green',
-		buttons = { '<shift>g' },
-		modes = { 'linestyle' },
-		call = function()
-			api.changeToolColor(colors.soft.light_green)
-		end,
-	},
+  selection = {
+    description = 'Selection',
+    buttons = { '<shift>r' },
+    modes = { 'tool' },
+    call = api.selectRegion,
+  },
+  fitHeight = {
+    description = 'zoom to normal',
+    buttons = { '<shift>t' },
+    modes = { 'tool' },
+    call = api.zoomNormal,
+  },
 
 
-	-- Line modifier
-	dotted = {
-		description = 'Dotted',
-		buttons = { '<shift>z' },
-		modes = { 'linestyle' },
-		call = api.dotted,
-	},
-	dashDotted = {
-		description = 'DashDotted',
-		buttons = { '<shift> x' },
-		modes = { 'linestyle' },
-		call = api.dashDotted,
-	},
-	dashed = {
-		description = 'Dashed',
-		buttons = { '<shift>c' },
-		modes = { 'linestyle' },
-		call = api.dashed,
-	},
-	plain = {
-		description = 'Plain',
-		buttons = { '<shift>v' },
-		modes = { 'linestyle' },
-		call = api.plain,
-	},
+  -- NOTE:  Linestyle
+  --
+  -- high contrast colors, thicknes
+  --
+  -- TAB -- Q       -- W       -- E tool   -- R          -- T
+  -- __  -- A black  -- S dblue -- D red    -- F mangenta -- G dgreen                                      # Hight contrast Colors
+  -- __  -- Z vthin -- X thin  -- C medium -- V thick    -- B vthick                                      # Thicknes
+  -- ``` --
+
+  tool = {
+    description = 'tool mode',
+    buttons = { 'e' },
+    modes = { 'linestyle' },
+    call = function()
+      changeMode('tool')
+    end,
+  },
+
+  -- High contast colors
+
+  black = {
+    description = 'Black',
+    buttons = { 'a' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.hard.black)
+    end,
+  },
+
+  blue = {
+    description = 'Dark Blue',
+    buttons = { 's' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.hard.blue)
+    end,
+  },
+
+  red = {
+    description = 'Red',
+    buttons = { 'd' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.hard.red)
+    end,
+  },
+
+  purple = {
+    description = 'Purple',
+    buttons = { 'f' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.hard.purple)
+    end,
+  },
+
+  green = {
+    description = 'Green',
+    buttons = { 'g' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.hard.green)
+    end,
+  },
+
+
+  -- Thickness
+  veryFine = {
+    description = 'Very Fine',
+    buttons = { 'z' },
+    modes = { 'linestyle' },
+    call = api.veryFine,
+  },
+  fine = {
+    description = 'Fine',
+    buttons = { 'x' },
+    modes = { 'linestyle' },
+    call = api.fine,
+  },
+  medium = {
+    description = 'Medium',
+    buttons = { 'c' },
+    modes = { 'linestyle' },
+    call = api.medium,
+  },
+  thick = {
+    description = 'Thick',
+    buttons = { 'v' },
+    modes = { 'linestyle' },
+    call = api.thick,
+  },
+  veryThick = {
+    description = 'Very thick',
+    buttons = { 'b' },
+    modes = { 'linestyle' },
+    call = api.veryThick,
+  },
+
+  -- NOTE:  <SHIFT> Linestyle
+  --
+  -- low contrast colors, linestyle
+  --
+  -- TAB -- Q      -- W       -- E        -- R        -- T
+  -- __  -- A grey -- S lblue   -- D orange    -- F yellow --  G lgreen                                  # Low Contrast Colors
+  -- __  -- Z .... -- X _. _. _ -- C  _ _ _ _  -- V ______  -- B                                         # Line modifyer
+  -- ``` --
+
+  -- Low contast colors
+
+  grey = {
+    description = 'Black',
+    buttons = { '<shift>a' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.soft.grey)
+    end,
+  },
+
+  lightBlue = {
+    description = 'Light Blue',
+    buttons = { '<shift>s' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.soft.light_blue)
+    end,
+  },
+
+  orange = {
+    description = 'Orange',
+    buttons = { '<shift>d' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.soft.orange)
+    end,
+  },
+
+  cyan = {
+    description = 'cyan',
+    buttons = { '<shift>f' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.soft.cyan)
+    end,
+  },
+
+  lightGreen = {
+    description = 'Light Green',
+    buttons = { '<shift>g' },
+    modes = { 'linestyle' },
+    call = function()
+      api.changeToolColor(colors.soft.light_green)
+    end,
+  },
+
+
+  -- Line modifier
+  dotted = {
+    description = 'Dotted',
+    buttons = { '<shift>z' },
+    modes = { 'linestyle' },
+    call = api.dotted,
+  },
+  dashDotted = {
+    description = 'DashDotted',
+    buttons = { '<shift> x' },
+    modes = { 'linestyle' },
+    call = api.dashDotted,
+  },
+  dashed = {
+    description = 'Dashed',
+    buttons = { '<shift>c' },
+    modes = { 'linestyle' },
+    call = api.dashed,
+  },
+  plain = {
+    description = 'Plain',
+    buttons = { '<shift>v' },
+    modes = { 'linestyle' },
+    call = api.plain,
+  },
 
 
 
@@ -425,7 +450,7 @@ local keybindings = {
 
 
 return {
-	bindings = keybindings,
-	ALL_MODES = ALL_MODES,
-	changeMode = changeMode,
+  bindings = keybindings,
+  ALL_MODES = ALL_MODES,
+  changeMode = changeMode,
 }

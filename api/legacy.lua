@@ -82,6 +82,11 @@ legacy.coordinate = function(enabled)
   toggleOrSet('ACTION_TOOL_DRAW_COORDINATE_SYSTEM', 'drawCoordinateSystem', enabled)
 end
 
+
+legacy.gridSnapping = function(enabled)
+  toggleOrSet('ACTION_GRID_SNAPPING', 'gridSnapping', enabled)
+end
+
 legacy.shapeRecognizer = function(enabled)
   toggleOrSet('ACTION_SHAPE_RECOGNIZER', 'strokeRecognizer', enabled)
 end
@@ -184,6 +189,14 @@ end
 
 legacy.zoomOut = function()
   app.uiAction({ action = 'ACTION_ZOOM_OUT' })
+end
+
+legacy.zoomNormal = function()
+  app.uiAction({ action = 'ACTION_ZOOM_100' })
+end
+
+legacy.zoomFit = function()
+  app.uiAction({ action = 'ACTION_ZOOM_FIT' })
 end
 
 -- PAGE MANAGEMENT

@@ -100,15 +100,15 @@ return {
   },
   hand = {
     { impl = wrapper.hand, deps = { 'changeActionState', 'app.C.Tool_hand' } },
-    { impl = legacy.hand, deps = { 'uiAction' } },
+    { impl = legacy.hand,  deps = { 'uiAction' } },
   },
   text = {
     { impl = wrapper.text, deps = { 'changeActionState', 'app.C.Tool_text' } },
-    { impl = legacy.text, deps = { 'uiAction' } },
+    { impl = legacy.text,  deps = { 'uiAction' } },
   },
   tex = {
     { impl = wrapper.tex, deps = { 'activateAction' } },
-    { impl = legacy.tex, deps = { 'uiAction' } },
+    { impl = legacy.tex,  deps = { 'uiAction' } },
   },
 
   -- LINE WIDTH
@@ -121,95 +121,100 @@ return {
   },
   fine = {
     { impl = wrapper.fine, deps = { 'changeActionState', 'app.C.ToolSize_thin' } },
-    { impl = legacy.fine, deps = { 'uiAction' } },
+    { impl = legacy.fine,  deps = { 'uiAction' } },
   },
   medium = {
     { impl = wrapper.medium, deps = { 'changeActionState', 'app.C.ToolSize_medium' } },
-    { impl = legacy.medium, deps = { 'uiAction' } },
+    { impl = legacy.medium,  deps = { 'uiAction' } },
   },
   thick = {
     { impl = wrapper.thick, deps = { 'changeActionState', 'app.C.ToolSize_thick' } },
-    { impl = legacy.thick, deps = { 'uiAction' } },
+    { impl = legacy.thick,  deps = { 'uiAction' } },
   },
   veryThick = {
     { impl = wrapper.veryThick, deps = { 'changeActionState', 'app.C.ToolSize_veryThick' } },
-    { impl = legacy.veryThick, deps = { 'uiAction' } },
+    { impl = legacy.veryThick,  deps = { 'uiAction' } },
   },
 
   -- LINE STYLE
   plain = {
     { impl = wrapper.plain, deps = { 'changeActionState' } },
-    { impl = legacy.plain, deps = { 'uiAction' } },
+    { impl = legacy.plain,  deps = { 'uiAction' } },
   },
   dotted = {
     { impl = wrapper.dotted, deps = { 'changeActionState' } },
-    { impl = legacy.dotted, deps = { 'uiAction' } },
+    { impl = legacy.dotted,  deps = { 'uiAction' } },
   },
   dashed = {
     { impl = wrapper.dashed, deps = { 'changeActionState' } },
-    { impl = legacy.dashed, deps = { 'uiAction' } },
+    { impl = legacy.dashed,  deps = { 'uiAction' } },
   },
   dashDotted = {
     { impl = wrapper.dashDotted, deps = { 'changeActionState' } },
-    { impl = legacy.dashDotted, deps = { 'uiAction' } },
+    { impl = legacy.dashDotted,  deps = { 'uiAction' } },
   },
 
   -- SELECTION
   selectRegion = {
     { impl = wrapper.selectRegion, deps = { 'changeActionState', 'app.C.Tool_selectRegion' } },
-    { impl = legacy.selectRegion, deps = { 'uiAction' } },
+    { impl = legacy.selectRegion,  deps = { 'uiAction' } },
   },
   selectRectangle = {
     { impl = wrapper.selectRectangle, deps = { 'changeActionState', 'app.C.Tool_selectRect' } },
-    { impl = legacy.selectRectangle, deps = { 'uiAction' } },
+    { impl = legacy.selectRectangle,  deps = { 'uiAction' } },
   },
   selectObject = {
     { impl = wrapper.selectObject, deps = { 'changeActionState', 'app.C.Tool_selectObject' } },
-    { impl = legacy.selectObject, deps = { 'uiAction' } },
+    { impl = legacy.selectObject,  deps = { 'uiAction' } },
   },
 
   -- SHAPES
   ruler = {
     { impl = wrapper.ruler, deps = { 'changeActionState' } },
-    { impl = legacy.ruler, deps = { 'uiAction' } },
+    { impl = legacy.ruler,  deps = { 'uiAction' } },
   },
   arrow = {
     { impl = wrapper.arrow, deps = { 'changeActionState' } },
-    { impl = legacy.arrow, deps = { 'uiAction' } },
+    { impl = legacy.arrow,  deps = { 'uiAction' } },
   },
   rectangle = {
     { impl = wrapper.rectangle, deps = { 'changeActionState' } },
-    { impl = legacy.rectangle, deps = { 'uiAction' } },
+    { impl = legacy.rectangle,  deps = { 'uiAction' } },
   },
   ellipse = {
     { impl = wrapper.ellipse, deps = { 'changeActionState' } },
-    { impl = legacy.ellipse, deps = { 'uiAction' } },
+    { impl = legacy.ellipse,  deps = { 'uiAction' } },
   },
   spline = {
     { impl = wrapper.spline, deps = { 'changeActionState' } },
-    { impl = legacy.spline, deps = { 'uiAction' } },
+    { impl = legacy.spline,  deps = { 'uiAction' } },
   },
   coordinate = {
     { impl = wrapper.coordinate, deps = { 'changeActionState' } },
-    { impl = legacy.coordinate, deps = { 'uiAction' } },
+    { impl = legacy.coordinate,  deps = { 'uiAction' } },
   },
   shapeRecognizer = {
     { impl = wrapper.shapeRecognizer, deps = { 'changeActionState' } },
-    { impl = legacy.shapeRecognizer, deps = { 'uiAction' } },
+    { impl = legacy.shapeRecognizer,  deps = { 'uiAction' } },
   },
+  gridSnapping = {
+    { impl = wrapper.gridSnapping, deps = { 'changeActionState' } },
+    { impl = legacy.gridSnapping,  deps = { 'uiAction' } },
+  },
+
   fill = {
     { impl = wrapper.fill, deps = { 'changeActionState' } },
-    { impl = legacy.fill, deps = { 'uiAction' } },
+    { impl = legacy.fill,  deps = { 'uiAction' } },
   },
 
   -- GEOMETRY TOOLS
   setsquare = {
     { impl = wrapper.setsquare, deps = { 'activateAction' } },
-    { impl = legacy.setsquare, deps = { 'uiAction' } },
+    { impl = legacy.setsquare,  deps = { 'uiAction' } },
   },
   compass = {
     { impl = wrapper.compass, deps = { 'activateAction' } },
-    { impl = legacy.compass, deps = { 'uiAction' } },
+    { impl = legacy.compass,  deps = { 'uiAction' } },
   },
 
   -- COLOR
@@ -220,69 +225,77 @@ return {
   -- EDITING
   delete = {
     { impl = wrapper.delete, deps = { 'activateAction' } },
-    { impl = legacy.delete, deps = { 'uiAction' } },
+    { impl = legacy.delete,  deps = { 'uiAction' } },
   },
   undo = {
     { impl = wrapper.undo, deps = { 'activateAction' } },
-    { impl = legacy.undo, deps = { 'uiAction' } },
+    { impl = legacy.undo,  deps = { 'uiAction' } },
   },
   redo = {
     { impl = wrapper.redo, deps = { 'activateAction' } },
-    { impl = legacy.redo, deps = { 'uiAction' } },
+    { impl = legacy.redo,  deps = { 'uiAction' } },
   },
 
   -- ZOOM
   zoomIn = {
     { impl = wrapper.zoomIn, deps = { 'activateAction' } },
-    { impl = legacy.zoomIn, deps = { 'uiAction' } },
+    { impl = legacy.zoomIn,  deps = { 'uiAction' } },
   },
   zoomOut = {
     { impl = wrapper.zoomOut, deps = { 'activateAction' } },
-    { impl = legacy.zoomOut, deps = { 'uiAction' } },
+    { impl = legacy.zoomOut,  deps = { 'uiAction' } },
+  },
+  zoomNormal = {
+    { impl = wrapper.zoomNormal, deps = { 'activateAction' } },
+    { impl = legacy.zoomNormal,  deps = { 'uiAction' } },
+  },
+  zoomFit = {
+    { impl = wrapper.zoomFit, deps = { 'activateAction' } },
+    { impl = legacy.zoomFit,  deps = { 'uiAction' } },
   },
 
   -- PAGE MANAGEMENT
   newBefore = {
     { impl = wrapper.newBefore, deps = { 'activateAction' } },
-    { impl = legacy.newBefore, deps = { 'sidebarAction' } },
+    { impl = legacy.newBefore,  deps = { 'sidebarAction' } },
   },
   newAfter = {
     { impl = wrapper.newAfter, deps = { 'activateAction' } },
-    { impl = legacy.newAfter, deps = { 'sidebarAction' } },
+    { impl = legacy.newAfter,  deps = { 'sidebarAction' } },
   },
   copyPage = {
     { impl = wrapper.copyPage, deps = { 'activateAction' } },
-    { impl = legacy.copyPage, deps = { 'sidebarAction' } },
+    { impl = legacy.copyPage,  deps = { 'sidebarAction' } },
   },
   deletePage = {
     { impl = wrapper.deletePage, deps = { 'activateAction' } },
-    { impl = legacy.deletePage, deps = { 'uiAction' } },
+    { impl = legacy.deletePage,  deps = { 'uiAction' } },
   },
   moveUp = {
     { impl = wrapper.moveUp, deps = { 'activateAction' } },
-    { impl = legacy.moveUp, deps = { 'sidebarAction' } },
+    { impl = legacy.moveUp,  deps = { 'sidebarAction' } },
   },
   moveDown = {
     { impl = wrapper.moveDown, deps = { 'activateAction' } },
-    { impl = legacy.moveDown, deps = { 'sidebarAction' } },
+    { impl = legacy.moveDown,  deps = { 'sidebarAction' } },
   },
 
   -- LAYER MANAGEMENT
   newLayer = {
     { impl = wrapper.newLayer, deps = { 'activateAction' } },
-    { impl = legacy.newLayer, deps = { 'uiAction' } },
+    { impl = legacy.newLayer,  deps = { 'uiAction' } },
   },
   deleteLayer = {
     { impl = wrapper.deleteLayer, deps = { 'activateAction' } },
-    { impl = legacy.deleteLayer, deps = { 'uiAction' } },
+    { impl = legacy.deleteLayer,  deps = { 'uiAction' } },
   },
   layerDown = {
     { impl = wrapper.layerDown, deps = { 'activateAction' } },
-    { impl = legacy.layerDown, deps = { 'uiAction' } },
+    { impl = legacy.layerDown,  deps = { 'uiAction' } },
   },
   layerUp = {
     { impl = wrapper.layerUp, deps = { 'activateAction' } },
-    { impl = legacy.layerUp, deps = { 'uiAction' } },
+    { impl = legacy.layerUp,  deps = { 'uiAction' } },
   },
 
   -- NAVIGATION
@@ -337,29 +350,29 @@ return {
   -- FILES
   open = {
     { impl = wrapper.open, deps = { 'activateAction' } },
-    { impl = legacy.open, deps = { 'uiAction' } },
+    { impl = legacy.open,  deps = { 'uiAction' } },
   },
   save = {
     { impl = wrapper.save, deps = { 'activateAction' } },
-    { impl = legacy.save, deps = { 'uiAction' } },
+    { impl = legacy.save,  deps = { 'uiAction' } },
   },
   saveAs = {
     { impl = wrapper.saveAs, deps = { 'activateAction' } },
-    { impl = legacy.saveAs, deps = { 'uiAction' } },
+    { impl = legacy.saveAs,  deps = { 'uiAction' } },
   },
   annotatePDF = {
     { impl = wrapper.annotatePDF, deps = { 'activateAction' } },
-    { impl = legacy.annotatePDF, deps = { 'uiAction' } },
+    { impl = legacy.annotatePDF,  deps = { 'uiAction' } },
   },
   exportAsPDF = {
     { impl = wrapper.exportAsPDF, deps = { 'activateAction' } },
-    { impl = legacy.exportAsPDF, deps = { 'uiAction' } },
+    { impl = legacy.exportAsPDF,  deps = { 'uiAction' } },
   },
 
   -- DIALOG
   openDialog = {
     { impl = wrapper.openDialog, deps = { 'openDialog' } },
-    { impl = legacy.msgbox, deps = { 'msgbox' } },
+    { impl = legacy.msgbox,      deps = { 'msgbox' } },
   },
 
   -- MISC

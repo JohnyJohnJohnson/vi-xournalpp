@@ -80,6 +80,10 @@ wrapper.shapeRecognizer = function(enabled)
   toggleOrSet('tool-draw-shape-recognizer', enabled)
 end
 
+wrapper.gridSnapping = function(enabled)
+  toggleOrSet('grid-snapping', enabled)
+end
+
 wrapper.fill = function(enabled)
   toggleOrSet('tool-fill', enabled)
 end
@@ -173,6 +177,14 @@ end
 
 wrapper.zoomOut = function()
   app.activateAction('zoom-out')
+end
+
+wrapper.zoomNormal = function()
+  app.activateAction('zoom-100')
+end
+
+wrapper.zoomFit = function()
+  app.activateAction('zoom-fit')
 end
 
 -- PAGE MANAGEMENT
