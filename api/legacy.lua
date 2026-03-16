@@ -82,7 +82,6 @@ legacy.coordinate = function(enabled)
   toggleOrSet('ACTION_TOOL_DRAW_COORDINATE_SYSTEM', 'drawCoordinateSystem', enabled)
 end
 
-
 legacy.gridSnapping = function(enabled)
   toggleOrSet('ACTION_GRID_SNAPPING', 'gridSnapping', enabled)
 end

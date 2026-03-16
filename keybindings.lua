@@ -14,7 +14,6 @@ local colors = {
     red = 0x990000,
     green = 0x009900,
     purple = 0x990099,
-
   },
   soft = {
     grey = 0x878787,
@@ -23,7 +22,6 @@ local colors = {
     light_green = 0x55ff55,
     cyan = 0xff30ba,
   },
-
 }
 
 -- helper functions
@@ -89,8 +87,6 @@ end
 -- KEYBINDINGS:   --
 --------------------
 
-
-
 -- NOTE: Pylosophy Split keyboard focused (Glove80 / Go60)
 -- everything drawing related to the left side
 -- everything writing related to the right side
@@ -106,7 +102,6 @@ end
 
 -- Arrows availabe on both sides
 -- Homerow layer
-
 
 local keybindings = {
   --NOTE: Left Side Drawing
@@ -134,9 +129,7 @@ local keybindings = {
     call = api.undo,
   },
 
-  wand = {
-
-  },
+  wand = {},
 
   linestyle = {
     description = 'Linestyle mode',
@@ -151,7 +144,6 @@ local keybindings = {
     buttons = { 't' },
     modes = { 'tool' },
     call = api.zoomFit,
-
   },
 
   -- Tool row
@@ -188,9 +180,7 @@ local keybindings = {
     modes = { 'tool' },
     call = api.arrow,
   },
-  bluePen = {
-
-  },
+  bluePen = {},
   filledBlueBox = {},
   filledBlueElipse = {},
   blueArrow = {},
@@ -199,7 +189,6 @@ local keybindings = {
     buttons = { 'backquote' },
     modes = { 'tool' },
     call = api.highlighter,
-
   },
   spline = {
     description = 'Spline',
@@ -207,7 +196,6 @@ local keybindings = {
     modes = { 'tool' },
     call = api.spline,
   },
-
 
   -- combo row
   -- presets most used
@@ -221,8 +209,7 @@ local keybindings = {
 
   -- Control variation
 
-  gridSnapping =
-  {
+  gridSnapping = {
     description = 'Toogle grid Snapping',
     buttons = { '<shift>Tab' },
     modes = { 'tool' },
@@ -235,7 +222,6 @@ local keybindings = {
     modes = { 'tool' },
     call = api.redo,
   },
-
 
   stikyLinestyle = {
     description = 'Linestyle mode',
@@ -258,7 +244,6 @@ local keybindings = {
     modes = { 'tool' },
     call = api.zoomNormal,
   },
-
 
   -- NOTE:  Linestyle
   --
@@ -324,7 +309,6 @@ local keybindings = {
       api.changeToolColor(colors.hard.green)
     end,
   },
-
 
   -- Thickness
   veryFine = {
@@ -414,7 +398,6 @@ local keybindings = {
     end,
   },
 
-
   -- Line modifier
   dotted = {
     description = 'Dotted',
@@ -440,14 +423,7 @@ local keybindings = {
     modes = { 'linestyle' },
     call = api.plain,
   },
-
-
-
-
-
-
 }
-
 
 return {
   bindings = keybindings,

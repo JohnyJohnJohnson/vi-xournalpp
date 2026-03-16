@@ -186,14 +186,14 @@ function capabilities.printCoverageSummary()
 
   log(
     '=== API Coverage: '
-    .. api_available
-    .. '/'
-    .. api_total
-    .. ' functions, '
-    .. constants_available
-    .. '/'
-    .. constants_total
-    .. ' constants ==='
+      .. api_available
+      .. '/'
+      .. api_total
+      .. ' functions, '
+      .. constants_available
+      .. '/'
+      .. constants_total
+      .. ' constants ==='
   )
 end
 
@@ -235,11 +235,11 @@ function capabilities.validateRegistry(registry)
       if type(impl_spec.impl) ~= 'function' then
         log(
           'ERROR: Invalid impl in '
-          .. func_name
-          .. ' implementation #'
-          .. i
-          .. ': expected function, got '
-          .. type(impl_spec.impl)
+            .. func_name
+            .. ' implementation #'
+            .. i
+            .. ': expected function, got '
+            .. type(impl_spec.impl)
         )
       end
 
@@ -247,21 +247,21 @@ function capabilities.validateRegistry(registry)
       if type(impl_spec.deps) ~= 'table' then
         log(
           'ERROR: Invalid deps in '
-          .. func_name
-          .. ' implementation #'
-          .. i
-          .. ': expected table, got '
-          .. type(impl_spec.deps)
+            .. func_name
+            .. ' implementation #'
+            .. i
+            .. ': expected table, got '
+            .. type(impl_spec.deps)
         )
       else
         -- Check: Multiple implementations with empty deps (only last should be empty)
         if num_implementations > 1 and #impl_spec.deps == 0 and i < num_implementations then
           log(
             'WARNING: '
-            .. func_name
-            .. ' implementation #'
-            .. i
-            .. ' has empty deps but is not the last implementation. This will always be selected.'
+              .. func_name
+              .. ' implementation #'
+              .. i
+              .. ' has empty deps but is not the last implementation. This will always be selected.'
           )
         end
 
@@ -270,11 +270,11 @@ function capabilities.validateRegistry(registry)
           if cache[dep] == nil then
             log(
               'WARNING: Unknown dependency "'
-              .. dep
-              .. '" in '
-              .. func_name
-              .. ' implementation #'
-              .. i
+                .. dep
+                .. '" in '
+                .. func_name
+                .. ' implementation #'
+                .. i
             )
           end
         end
