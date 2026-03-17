@@ -180,13 +180,64 @@ local keybindings = {
     modes = { 'tool' },
     call = api.arrow,
   },
-  bluePen = {},
-  filledBlueBox = {},
-  filledBlueElipse = {},
-  blueArrow = {},
+  -- Style combo
+  -- blue pen
+  bluePen = {
+    description = 'Blue pen',
+    buttons = { 'z' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.pen()
+      api.medium()
+      api.plain()
+      api.changeToolColor(colors.hard.blue)
+    end,
+  },
+  -- filled blue box
+  filledBlueBox = {
+    description = 'filled blue box',
+    buttons = { 'x' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.rectangle()
+      api.medium()
+      api.plain()
+      api.fill(true)
+      api.changeToolColor(colors.hard.blue)
+    end,
+  },
+  -- filled blue ellipse
+  filledBlueEllipse = {
+    description = 'filled blue ellipse',
+    buttons = { 'c' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.ellipse()
+      api.medium()
+      api.plain()
+      api.fill(true)
+      api.changeToolColor(colors.hard.blue)
+    end,
+  },
+  -- blue arrow
+  blueArrow = {
+    description = 'blue arrow',
+    buttons = { 'v' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.arrow()
+      api.medium()
+      api.plain()
+      api.changeToolColor(colors.hard.blue)
+    end,
+  },
   highlighter = {
     description = 'Highlighter',
-    buttons = { 'backquote' },
+    buttons = { 'grave' },
     modes = { 'tool' },
     call = api.highlighter,
   },
@@ -224,7 +275,7 @@ local keybindings = {
   },
 
   stikyLinestyle = {
-    description = 'Linestyle mode',
+    description = 'Stiky Linestyle mode',
     buttons = { '<shift>e' },
     modes = { 'tool' },
     call = function()
@@ -243,6 +294,68 @@ local keybindings = {
     buttons = { '<shift>t' },
     modes = { 'tool' },
     call = api.zoomNormal,
+  },
+
+  redPen = {
+    description = 'Red Pen',
+    buttons = { '<shift>z' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.pen()
+      api.medium()
+      api.plain()
+      api.changeToolColor(colors.hard.red)
+    end,
+  },
+
+  filledRedBox = {
+    description = 'filled red box',
+    buttons = { '<shift>x' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.rectangle()
+      api.medium()
+      api.plain()
+      api.fill(true)
+      api.changeToolColor(colors.hard.red)
+    end,
+  },
+  filledRedEllipse = {
+    description = 'filled red ellipse',
+    buttons = { '<shift>c' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.ellipse()
+      api.medium()
+      api.plain()
+      api.fill(true)
+      api.changeToolColor(colors.hard.red)
+    end,
+  },
+  -- blue arrow
+  redArrow = {
+    description = 'blue arrow',
+    buttons = { '<shift>v' },
+    modes = { 'tool' },
+    call = function()
+      cleanShape()
+      api.arrow()
+      api.medium()
+      api.plain()
+      api.changeToolColor(colors.hard.red)
+    end,
+  },
+  filledspline = {
+    description = 'Filled Spline',
+    buttons = { '<shift>b' },
+    modes = { 'tool' },
+    call = function()
+      api.spline()
+      api.fill(true)
+    end,
   },
 
   -- NOTE:  Linestyle
@@ -336,7 +449,7 @@ local keybindings = {
     call = api.thick,
   },
   veryThick = {
-    description = 'Very thick',
+    description = 'Very Thick',
     buttons = { 'b' },
     modes = { 'linestyle' },
     call = api.veryThick,
